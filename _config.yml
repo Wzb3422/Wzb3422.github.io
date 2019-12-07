@@ -108,4 +108,7 @@ theme_config:
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: ''
+  type: git
+  repo: git@github.com:Wzb3422/Wzb3422.github.io.git
+  branch: master
+  
