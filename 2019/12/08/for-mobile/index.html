@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="在前端开发中会遇到各种各样的单位，或许会让你感到十分恐惧？战胜恐惧的最好办法就是面对恐惧。来，把它们的来龙去脉捋捋清楚。 法律声明警告：本作品遵循 署名-非商业性使用-禁止演绎 4.0 未本地化版本（CC BY-NC-ND 4.0） 协议发布。你应该明白与本文有关的一切行为都应该遵循此协议。  这是什么？  写在前面本文将从现实到抽象，跟着 web 的发展帮你理解各种单位与移动端适配方案。 常见概">
+<meta name="keywords" content="CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="for-mobile">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;08&#x2F;for-mobile&#x2F;index.html">
+<meta property="og:site_name" content="Wzb&#39;s Blog">
+<meta property="og:description" content="在前端开发中会遇到各种各样的单位，或许会让你感到十分恐惧？战胜恐惧的最好办法就是面对恐惧。来，把它们的来龙去脉捋捋清楚。 法律声明警告：本作品遵循 署名-非商业性使用-禁止演绎 4.0 未本地化版本（CC BY-NC-ND 4.0） 协议发布。你应该明白与本文有关的一切行为都应该遵循此协议。  这是什么？  写在前面本文将从现实到抽象，跟着 web 的发展帮你理解各种单位与移动端适配方案。 常见概">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http:&#x2F;&#x2F;assets.wzbspace.top&#x2F;img&#x2F;Pixel-example.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;assets.wzbspace.top&#x2F;img&#x2F;Resolution_illustration.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;assets.wzbspace.top&#x2F;img&#x2F;2560px-Vector_Video_Standards8.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;assets.wzbspace.top&#x2F;img&#x2F;20191109225342.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;assets.wzbspace.top&#x2F;img&#x2F;20191109225938.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;assets.wzbspace.top&#x2F;img&#x2F;20191109230028.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;assets.wzbspace.top&#x2F;img&#x2F;Non-Retina_Display.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;assets.wzbspace.top&#x2F;img&#x2F;Retina_Display.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;assets.wzbspace.top&#x2F;img&#x2F;Screen Shot 2019-11-16 at 3.23.11 PM.png">
+<meta property="og:updated_time" content="2019-12-07T19:43:57.653Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;assets.wzbspace.top&#x2F;img&#x2F;Pixel-example.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>for-mobile</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/probberechts" target="_blank" rel="noopener">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2019/12/08/CSS-centering/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/12/08/for-mobile/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/12/08/for-mobile/&text=for-mobile" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/12/08/for-mobile/&title=for-mobile" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/12/08/for-mobile/&is_video=false&description=for-mobile" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=for-mobile&body=Check out this article: http://yoursite.com/2019/12/08/for-mobile/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/12/08/for-mobile/&title=for-mobile" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/12/08/for-mobile/&title=for-mobile" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/12/08/for-mobile/&title=for-mobile" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/12/08/for-mobile/&title=for-mobile" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/12/08/for-mobile/&name=for-mobile&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2019/12/08/for-mobile/&t=for-mobile" target="_blank" rel="noopener"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#法律声明"><span class="toc-number">1.</span> <span class="toc-text">法律声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#写在前面"><span class="toc-number">1.1.</span> <span class="toc-text">写在前面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常见概念"><span class="toc-number">1.2.</span> <span class="toc-text">常见概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#英寸-inch"><span class="toc-number">1.2.1.</span> <span class="toc-text">英寸 inch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#像素-Pixel"><span class="toc-number">1.2.2.</span> <span class="toc-text">像素 Pixel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分辨率-Image-resolution"><span class="toc-number">1.2.3.</span> <span class="toc-text">分辨率 Image resolution</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#图像分辨率"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">图像分辨率</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#显示分辨率"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">显示分辨率</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PPI"><span class="toc-number">1.2.3.3.</span> <span class="toc-text">PPI</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设备独立像素"><span class="toc-number">1.2.4.</span> <span class="toc-text">设备独立像素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设备像素比"><span class="toc-number">1.2.5.</span> <span class="toc-text">设备像素比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#视口-Viewport"><span class="toc-number">1.2.6.</span> <span class="toc-text">视口 Viewport</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">1.3.</span> <span class="toc-text">References</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        for-mobile
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Wzb's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-12-07T19:43:37.000Z" itemprop="datePublished">2019-12-08</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/CSS/" rel="tag">CSS</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>在前端开发中会遇到各种各样的单位，或许会让你感到十分恐惧？战胜恐惧的最好办法就是面对恐惧。来，把它们的来龙去脉捋捋清楚。</p>
+<h1 id="法律声明"><a href="#法律声明" class="headerlink" title="法律声明"></a>法律声明</h1><p><strong>警告</strong>：本作品遵循 <strong>署名-非商业性使用-禁止演绎 4.0 未本地化版本（CC BY-NC-ND 4.0）</strong> 协议发布。你应该明白与本文有关的一切行为都应该遵循此协议。</p>
+<blockquote>
+<p><a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">这是什么？</a></p>
+</blockquote>
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>本文将从现实到抽象，跟着 web 的发展帮你理解各种单位与移动端适配方案。</p>
+<h2 id="常见概念"><a href="#常见概念" class="headerlink" title="常见概念"></a>常见概念</h2><h3 id="英寸-inch"><a href="#英寸-inch" class="headerlink" title="英寸 inch"></a>英寸 inch</h3><p>英寸一般用来描述屏幕的物理大小，如：<code>23英寸显示器</code>、<code>6.3英寸手机</code>。起源于人类拇指的宽度。</p>
+<p>英寸与厘米的换算：<code>1 inch  = 2.54 cm</code></p>
+<h3 id="像素-Pixel"><a href="#像素-Pixel" class="headerlink" title="像素 Pixel"></a>像素 Pixel</h3><p>像素是影像显示的基本单位。译自英文 Pixel，<code>pix</code> 是单词 <code>pictures</code> 的缩写，加上 <code>el</code> (element)。就得到了 <code>pixel</code>，故像素表示影像元素之意。像素是在屏幕影像上显示的最小单位。</p>
+<p>你能看见下图中被放大区域的像素块。</p>
+<p><img src="http://assets.wzbspace.top/img/Pixel-example.png" alt="Pixel-example"></p>
+<h3 id="分辨率-Image-resolution"><a href="#分辨率-Image-resolution" class="headerlink" title="分辨率 Image resolution"></a>分辨率 Image resolution</h3><p>分辨率泛指量测或显示系统对细节的分辨能力。我们在这里只讨论，显示分辨率与影像分辨率。</p>
+<h4 id="图像分辨率"><a href="#图像分辨率" class="headerlink" title="图像分辨率"></a>图像分辨率</h4><p>通常图像分辨率被表示为每一个方向上的像素数量，如 <code>640x480</code>。</p>
+<p>也可以使用每英寸像素数及图像的高宽描述，如 <code>72 ppi &amp; 8x6 inch</code></p>
+<p><img src="http://assets.wzbspace.top/img/Resolution_illustration.png" alt="Resolution_illustration"></p>
+<h4 id="显示分辨率"><a href="#显示分辨率" class="headerlink" title="显示分辨率"></a>显示分辨率</h4><p>对于屏幕，我们使用像素数量来衡量。如 <code>1920x1080</code>，这代表该屏幕水平方向上和竖直方向上分别有1920个和1080个像素。</p>
+<p><img src="http://assets.wzbspace.top/img/2560px-Vector_Video_Standards8.png" alt="2560px-Vector_Video_Standards8"></p>
+<h4 id="PPI"><a href="#PPI" class="headerlink" title="PPI"></a>PPI</h4><p>Pixel Per Inch - 每英寸像素数。PPI 可以用来衡量显示器或者一张图片的质量。</p>
+<p><img src="http://assets.wzbspace.top/img/20191109225342.png" alt="iphones-compare"></p>
+<p>上图 iPhone 的对比中，我们看到了三款手机的 PPI 参数。</p>
+<p>计算方法分为两步：</p>
+<p>首先算得屏幕对角线上的像素数量。</p>
+<img src="http://assets.wzbspace.top/img/20191109225938.png" alt="step1" style="zoom:50%;" />
+
+<p>然后除以屏幕尺寸（对角线长度）</p>
+<img src="http://assets.wzbspace.top/img/20191109230028.png" alt="step2" style="zoom:50%;" />
+
+<h3 id="设备独立像素"><a href="#设备独立像素" class="headerlink" title="设备独立像素"></a>设备独立像素</h3><p>上面我们描述的都是物理像素，即真实存在的物理单元。那什么是设备独立像素呢？</p>
+<p>首先我们来了解一下设备独立像素是在怎样的背景下产生的。</p>
+<p>在智能手机发展快速的时代，手机屏幕的分辨率也在不断的升级。几年前可能我们还在用着分辨率比较低的手机，如：480x320 分辨率。但随着科技的发展，更高分辨率的手机出现了。如iPhone 4：960x640（刚好是前者手机分辨率（在方向上的）两倍）如果以物理像素和影像像素数量一一对应的显示方式的话，相同大小的图片在iPhone 4 手机上看到的大小是前者低分辨率手机的二分之一。</p>
+<p>这样，岂不是后面出现更高分辨率的手机，页面元素会变得越来越小吗？同时，这也没达到手机更高分辨率的目的——让视觉体验更加细腻。</p>
+<p>在 WWDC 2010 上，Steve Jobs 发布了 iPhone 4 ，它是第一款采用 Retina Display 技术的产品。由四个像素为一组，输出原来屏幕一个像素显示的大小区域的图像。这样以来，用户看到的图标与文字大小与原来分辨率的显示屏相同，但是精细度是原来的四倍。</p>
+<p>通过下图对比可以明显地观察到这种关系。</p>
+<p>iPhone 3 GS</p>
+<img src="http://assets.wzbspace.top/img/Non-Retina_Display.jpg" alt="Non-Retina_Display" style="zoom: 50%;" />
+
+<p>iPhone 4 / 4s</p>
+<img src="http://assets.wzbspace.top/img/Retina_Display.jpg" style="zoom: 25%;" />
+
+<p>正式它解决了这样的问题，也使得它成为了一款跨时代的手机。</p>
+<p>所以，我们必须以一种单位告诉不同分辨率的手机，页面元素在它们屏幕上显示元素的实际大小是多少，这个单位称为设备独立像素（Device Independent Pixels），简称 <code>DIP</code> 或者<code>DP</code>。</p>
+<p>打开 Chrome Devtools ，可以模拟各个手机型号的显示情况。比如下图显示的 iPhone X 尺寸为 <code>375x812</code></p>
+<p> ，我们知道 iPhone X 的实际显示像素会比这个值高很多。这里的 <code>375x812</code> 指的是设备独立像素。<br><img src="http://assets.wzbspace.top/img/Screen Shot 2019-11-16 at 3.23.11 PM.png" style="zoom:50%;" /></p>
+<h3 id="设备像素比"><a href="#设备像素比" class="headerlink" title="设备像素比"></a>设备像素比</h3><p>在真正弄清设备独立像素这个概念之前，还需要了解设备像素比。</p>
+<p>设备像素比（Device Pixel Ratio），简称 DPR，描述的是物理像素和设备独立像素的比值。</p>
+<p>在 web 浏览器中，我们可以通过 window.devicePixelRatio 来获取设备的 DPR。</p>
+<h3 id="视口-Viewport"><a href="#视口-Viewport" class="headerlink" title="视口 Viewport"></a>视口 Viewport</h3><p>viewport 在计算机图形学领域中指的是可见的多边形区域。在 Web 开发中，我们一般会讨论三种视口。</p>
+<p>分别是：</p>
+<ul>
+<li>布局视口 layout viewport</li>
+<li>视觉视口 visual viewport</li>
+<li>理想视口 ideal viewport</li>
+</ul>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a href="https://en.wikipedia.org/wiki/Inch" target="_blank" rel="noopener">Inch - Wikipedia</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Pixel" target="_blank" rel="noopener">Pixel - Wikipedia</a></li>
+</ul>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/probberechts" target="_blank" rel="noopener">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#法律声明"><span class="toc-number">1.</span> <span class="toc-text">法律声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#写在前面"><span class="toc-number">1.1.</span> <span class="toc-text">写在前面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常见概念"><span class="toc-number">1.2.</span> <span class="toc-text">常见概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#英寸-inch"><span class="toc-number">1.2.1.</span> <span class="toc-text">英寸 inch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#像素-Pixel"><span class="toc-number">1.2.2.</span> <span class="toc-text">像素 Pixel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分辨率-Image-resolution"><span class="toc-number">1.2.3.</span> <span class="toc-text">分辨率 Image resolution</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#图像分辨率"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">图像分辨率</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#显示分辨率"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">显示分辨率</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PPI"><span class="toc-number">1.2.3.3.</span> <span class="toc-text">PPI</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设备独立像素"><span class="toc-number">1.2.4.</span> <span class="toc-text">设备独立像素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设备像素比"><span class="toc-number">1.2.5.</span> <span class="toc-text">设备像素比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#视口-Viewport"><span class="toc-number">1.2.6.</span> <span class="toc-text">视口 Viewport</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">1.3.</span> <span class="toc-text">References</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/12/08/for-mobile/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/12/08/for-mobile/&text=for-mobile" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/12/08/for-mobile/&title=for-mobile" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/12/08/for-mobile/&is_video=false&description=for-mobile" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=for-mobile&body=Check out this article: http://yoursite.com/2019/12/08/for-mobile/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/12/08/for-mobile/&title=for-mobile" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/12/08/for-mobile/&title=for-mobile" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/12/08/for-mobile/&title=for-mobile" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/12/08/for-mobile/&title=for-mobile" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/12/08/for-mobile/&name=for-mobile&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2019/12/08/for-mobile/&t=for-mobile" target="_blank" rel="noopener"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 John Doe
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/probberechts" target="_blank" rel="noopener">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-136390151-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

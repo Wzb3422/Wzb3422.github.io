@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="「居中」是进行布局时最常见的需求之一了。CSS 有多种居中的方式，在什么时候挑选适合的方案？是一个值得思考的问题。 法律声明警告：本作品遵循 署名-非商业性使用-禁止演绎 4.0 未本地化版本（CC BY-NC-ND 4.0） 协议发布。你应该明白与本文有关的一切行为都应该遵循此协议。  这是什么？  写在前面本文将会按照具体场景来选择相应的居中方式，帮助你系统地理清 CSS 居中。 注意：为了简">
+<meta name="keywords" content="CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS-centering">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;08&#x2F;CSS-centering&#x2F;index.html">
+<meta property="og:site_name" content="Wzb&#39;s Blog">
+<meta property="og:description" content="「居中」是进行布局时最常见的需求之一了。CSS 有多种居中的方式，在什么时候挑选适合的方案？是一个值得思考的问题。 法律声明警告：本作品遵循 署名-非商业性使用-禁止演绎 4.0 未本地化版本（CC BY-NC-ND 4.0） 协议发布。你应该明白与本文有关的一切行为都应该遵循此协议。  这是什么？  写在前面本文将会按照具体场景来选择相应的居中方式，帮助你系统地理清 CSS 居中。 注意：为了简">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http:&#x2F;&#x2F;assets.wzbspace.top&#x2F;img&#x2F;css-centering-inline-words.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;assets.wzbspace.top&#x2F;img&#x2F;css-centering-block-element.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;assets.wzbspace.top&#x2F;img&#x2F;full-width-block-element.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;assets.wzbspace.top&#x2F;img&#x2F;inline-blocks-centering.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;assets.wzbspace.top&#x2F;img&#x2F;centering-blocks-in-flex.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;assets.wzbspace.top&#x2F;img&#x2F;centerinig-links.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;assets.wzbspace.top&#x2F;img&#x2F;centering-a-line.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;assets.wzbspace.top&#x2F;img&#x2F;lines-wraps.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;assets.wzbspace.top&#x2F;img&#x2F;lines-center-no-wrap.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;assets.wzbspace.top&#x2F;img&#x2F;muti-lines-centering.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;assets.wzbspace.top&#x2F;img&#x2F;position-center-.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;assets.wzbspace.top&#x2F;img&#x2F;table-vertical-centering.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;assets.wzbspace.top&#x2F;img&#x2F;felx-vertival-center.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;assets.wzbspace.top&#x2F;img&#x2F;centering-positon-nagetive.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;assets.wzbspace.top&#x2F;img&#x2F;unknow-height-width-centering.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;assets.wzbspace.top&#x2F;img&#x2F;flex-centerring.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;assets.wzbspace.top&#x2F;img&#x2F;flex-centerring.png">
+<meta property="og:updated_time" content="2019-12-07T19:42:46.675Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;assets.wzbspace.top&#x2F;img&#x2F;css-centering-inline-words.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>CSS-centering</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/probberechts" target="_blank" rel="noopener">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/12/08/for-mobile/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/12/07/code-representation-of-signed-binary-numbers/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/12/08/CSS-centering/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/12/08/CSS-centering/&text=CSS-centering" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/12/08/CSS-centering/&title=CSS-centering" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/12/08/CSS-centering/&is_video=false&description=CSS-centering" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=CSS-centering&body=Check out this article: http://yoursite.com/2019/12/08/CSS-centering/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/12/08/CSS-centering/&title=CSS-centering" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/12/08/CSS-centering/&title=CSS-centering" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/12/08/CSS-centering/&title=CSS-centering" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/12/08/CSS-centering/&title=CSS-centering" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/12/08/CSS-centering/&name=CSS-centering&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2019/12/08/CSS-centering/&t=CSS-centering" target="_blank" rel="noopener"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#法律声明"><span class="toc-number">1.</span> <span class="toc-text">法律声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#写在前面"><span class="toc-number">1.1.</span> <span class="toc-text">写在前面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在水平方向上的居中（Horizontally-Centering）"><span class="toc-number">1.2.</span> <span class="toc-text">在水平方向上的居中（Horizontally Centering）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#对于行内（inline-inline-）元素"><span class="toc-number">1.2.1.</span> <span class="toc-text">对于行内（inline / inline-* ）元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对于块级元素（block-element）"><span class="toc-number">1.2.2.</span> <span class="toc-text">对于块级元素（block element）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如果有多个块级元素？"><span class="toc-number">1.2.3.</span> <span class="toc-text">如果有多个块级元素？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在竖直方向上的居中（Vertically-Centering）"><span class="toc-number">1.3.</span> <span class="toc-text">在竖直方向上的居中（Vertically Centering）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#对于行内（inline-inline-）元素-1"><span class="toc-number">1.3.1.</span> <span class="toc-text">对于行内（inline / inline-* ）元素</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#只有一行时"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">只有一行时</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#有多行文字时"><span class="toc-number">1.3.1.2.</span> <span class="toc-text">有多行文字时</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对于块级（block）元素"><span class="toc-number">1.3.2.</span> <span class="toc-text">对于块级（block）元素</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#已经确定块级元素的高度"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">已经确定块级元素的高度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#不能确定块级元素的高度"><span class="toc-number">1.3.2.2.</span> <span class="toc-text">不能确定块级元素的高度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#如果你不在乎元素撑大的话"><span class="toc-number">1.3.2.3.</span> <span class="toc-text">如果你不在乎元素撑大的话</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Flexbox"><span class="toc-number">1.3.2.3.1.</span> <span class="toc-text">Flexbox</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#水平和竖直方向上同时居中"><span class="toc-number">1.4.</span> <span class="toc-text">水平和竖直方向上同时居中</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#元素确定了高度和宽度时"><span class="toc-number">1.4.1.</span> <span class="toc-text">元素确定了高度和宽度时</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#不确定元素高宽"><span class="toc-number">1.4.2.</span> <span class="toc-text">不确定元素高宽</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flexbox-1"><span class="toc-number">1.4.3.</span> <span class="toc-text">Flexbox</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Gird"><span class="toc-number">1.4.4.</span> <span class="toc-text">Gird</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#写在最后"><span class="toc-number">1.5.</span> <span class="toc-text">写在最后</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">1.6.</span> <span class="toc-text">References</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        CSS-centering
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Wzb's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-12-07T19:42:21.000Z" itemprop="datePublished">2019-12-08</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/CSS/" rel="tag">CSS</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>「居中」是进行布局时最常见的需求之一了。CSS 有多种居中的方式，在什么时候挑选适合的方案？是一个值得思考的问题。</p>
+<h1 id="法律声明"><a href="#法律声明" class="headerlink" title="法律声明"></a>法律声明</h1><p><strong>警告</strong>：本作品遵循 <strong>署名-非商业性使用-禁止演绎 4.0 未本地化版本（CC BY-NC-ND 4.0）</strong> 协议发布。你应该明白与本文有关的一切行为都应该遵循此协议。</p>
+<blockquote>
+<p><a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">这是什么？</a></p>
+</blockquote>
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>本文将会按照具体场景来选择相应的居中方式，帮助你系统地理清 CSS 居中。</p>
+<p>注意：为了简洁，文中给出的 CSS 代码只会给出关键的定义布局的代码。</p>
+<h2 id="在水平方向上的居中（Horizontally-Centering）"><a href="#在水平方向上的居中（Horizontally-Centering）" class="headerlink" title="在水平方向上的居中（Horizontally Centering）"></a>在水平方向上的居中（Horizontally Centering）</h2><h3 id="对于行内（inline-inline-）元素"><a href="#对于行内（inline-inline-）元素" class="headerlink" title="对于行内（inline / inline-* ）元素"></a>对于行内（inline / inline-* ）元素</h3><p>要将行内元素居中，只需要给其父块级元素（block-level parent element）定义以下 CSS 规则：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.block-level-parent-of-inline-element</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">  <span class="attribute">text-align</span>: center;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
+<p><img src="http://assets.wzbspace.top/img/css-centering-inline-words.png" alt="centering-inline-element"></p>
+<blockquote>
+<p>这对 <code>inline</code> <code>inline-block</code> <code>inline-table</code> <code>inline-flex</code> etc. 都生效</p>
+</blockquote>
+<p><code>text-align</code> 不仅仅是针对于 <code>text</code> 的对齐描述，实际上，它影响的是块级元素下的行内元素与文本（inline contents）。</p>
+<blockquote>
+<p>参考：<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-align" target="_blank" rel="noopener">text-align - CSS | MDN</a></p>
+</blockquote>
+<h3 id="对于块级元素（block-element）"><a href="#对于块级元素（block-element）" class="headerlink" title="对于块级元素（block element）"></a>对于块级元素（block element）</h3><p>要将块级元素居中，给其<strong>定宽（width）之后</strong>定义以下 CSS 规则</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.block-element</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span> auto;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
+<p><img src="http://assets.wzbspace.top/img/css-centering-block-element.png" alt="css-centering-block-element"></p>
+<p>如果没有给定块级元素宽度？那它会充满整行，以至于不需要居中了… 🔨</p>
+<p>就像这样</p>
+<p><img src="http://assets.wzbspace.top/img/full-width-block-element.png" alt="full-witdh"></p>
+<h3 id="如果有多个块级元素？"><a href="#如果有多个块级元素？" class="headerlink" title="如果有多个块级元素？"></a>如果有多个块级元素？</h3><p>如果你想将多个块级元素在水平方向上居中，有以下两种方法。</p>
+<ul>
+<li>将多个块级元素设置 <code>display: inline-box;</code> 然后给父级元素定义 <code>text-align: center;</code>（与上文的行内元素居中同理）</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">  <span class="attribute">text-align</span>: center;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.block-elements</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">  <span class="attribute">display</span>: inline-block;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
+<p><img src="http://assets.wzbspace.top/img/inline-blocks-centering.png" alt="inline-blocks-centering"></p>
+<ul>
+<li>使用 Flexbox</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">  <span class="attribute">display</span>: flex;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">  <span class="attribute">justify-content</span>: center;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
+<p><img src="http://assets.wzbspace.top/img/centering-blocks-in-flex.png" alt="centering-blocks-in-flex"></p>
+<h2 id="在竖直方向上的居中（Vertically-Centering）"><a href="#在竖直方向上的居中（Vertically-Centering）" class="headerlink" title="在竖直方向上的居中（Vertically Centering）"></a>在竖直方向上的居中（Vertically Centering）</h2><h3 id="对于行内（inline-inline-）元素-1"><a href="#对于行内（inline-inline-）元素-1" class="headerlink" title="对于行内（inline / inline-* ）元素"></a>对于行内（inline / inline-* ）元素</h3><p>比如文字（text）和链接（links）</p>
+<h4 id="只有一行时"><a href="#只有一行时" class="headerlink" title="只有一行时"></a>只有一行时</h4><ul>
+<li>要让行内元素/文字看起来在竖直方向上的中间，可以给其定义上下相等的内边距（padding）</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">a</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">  <span class="attribute">padding-top</span>: <span class="number">20px</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">  <span class="attribute">padding-bottom</span>: <span class="number">20px</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
+<p><img src="http://assets.wzbspace.top/img/centerinig-links.png" alt="centering-links"></p>
+<ul>
+<li>还有一种方案是，将文字的行高值设置与其元素高度相同。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">  <span class="attribute">height</span>: <span class="number">60px</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">  <span class="attribute">line-height</span>: <span class="number">60px</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
+<p><img src="http://assets.wzbspace.top/img/centering-a-line.png" alt="centering-a-line"></p>
+<p>仔细思考，如果文字的内容超过一行，或者是父级元素的大小在响应式变化的情况下变小导致文字需要换行，会出现这样的情况。</p>
+<p><img src="http://assets.wzbspace.top/img/lines-wraps.png" alt="lines-wraps"></p>
+<p>解决这个问题，只需要设置文字不换行即可</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">  <span class="attribute">height</span>: <span class="number">60px</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">  <span class="attribute">line-height</span>: <span class="number">60px</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">  <span class="attribute">white-space</span>: nowarp;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
+<p><img src="http://assets.wzbspace.top/img/lines-center-no-wrap.png" alt="lines-center-no-wrap"></p>
+<h4 id="有多行文字时"><a href="#有多行文字时" class="headerlink" title="有多行文字时"></a>有多行文字时</h4><ul>
+<li><p>同样的，可以给元素设置上下相等的 <code>padding</code>，让文字看起来在中间</p>
+</li>
+<li><p>将父元素定义为 <code>display: table;</code> 同时将子元素设置为 <code>display: table-cell;</code> 并且给予 <code>vertical-align: middle;</code> 属性。</p>
+</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">  <span class="attribute">display</span>: table;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">  <span class="attribute">height</span>: <span class="number">60px</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> <span class="selector-tag">p</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">  <span class="attribute">display</span>: table-cell;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">  <span class="attribute">vertical-align</span>: middle;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
+<ul>
+<li>使用 Flexbox 居中</li>
+</ul>
+<p>将文字放在块级元素中，给其父元素使用 Flex</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">  <span class="attribute">display</span>: flex;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">  <span class="attribute">flex-direction</span>: column;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">  <span class="attribute">justify-content</span>: center;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
+<p><strong>以上效果相同，如下图。</strong></p>
+<p><img src="http://assets.wzbspace.top/img/muti-lines-centering.png" alt="muti-lines-centering"></p>
+<h3 id="对于块级（block）元素"><a href="#对于块级（block）元素" class="headerlink" title="对于块级（block）元素"></a>对于块级（block）元素</h3><h4 id="已经确定块级元素的高度"><a href="#已经确定块级元素的高度" class="headerlink" title="已经确定块级元素的高度"></a>已经确定块级元素的高度</h4><p>在实际情况下，很少会明确地确定某一个元素的高度。如果真的能够确定某个元素的高度，可以使用下面的方法。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">  <span class="attribute">position</span>: relative;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.child</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">  <span class="attribute">position</span>: absolute;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">  <span class="attribute">top</span>: <span class="number">50%</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">  <span class="attribute">margin-top</span>: -<span class="number">50px</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
+<p>这里需要注意的是 <code>top</code> 属性的计算方法，可以参考 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/top" target="_blank" rel="noopener">CSS - top | MDN</a>。</p>
+<p><img src="http://assets.wzbspace.top/img/position-center-.png" alt="centerring-position-block"></p>
+<h4 id="不能确定块级元素的高度"><a href="#不能确定块级元素的高度" class="headerlink" title="不能确定块级元素的高度"></a>不能确定块级元素的高度</h4><p>我们仍可以使用与上例类似的方法，不过需要使用 <code>transform</code> 属性。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">  <span class="attribute">position</span>: relative;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">  <span class="attribute">position</span>: absolute;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">  <span class="attribute">top</span>: <span class="number">50%</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translateY</span>(-50%);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
+<blockquote>
+<p>对于 translate 的计算方式，可以参考 <a href="https://stackoverflow.com/questions/34551381/is-the-css3-transform-translate-percentage-values-relative-to-its-width-and-or-h" target="_blank" rel="noopener">Is the CSS3 transform translate percentage values relative to its width and/or height? - Stack Overflow</a></p>
+</blockquote>
+<h4 id="如果你不在乎元素撑大的话"><a href="#如果你不在乎元素撑大的话" class="headerlink" title="如果你不在乎元素撑大的话"></a>如果你不在乎元素撑大的话</h4><p>你不在乎元素是否撑开，只想要它的内容竖直居中，可以使用 table 或者是 CSS display 将其变成 table 行为。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">main</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">  <span class="attribute">padding</span>: <span class="number">5px</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">  <span class="attribute">display</span>: table;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">main</span> <span class="selector-tag">div</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">  <span class="attribute">display</span>: table-cell;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">  <span class="attribute">vertical-align</span>: middle;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
+<p><img src="http://assets.wzbspace.top/img/table-vertical-centering.png" alt="table-vertical-centering"></p>
+<p>可见，元素被撑大了。🔨</p>
+<h5 id="Flexbox"><a href="#Flexbox" class="headerlink" title="Flexbox"></a>Flexbox</h5><p>使用 Flexbox 在竖直方向上居中是同样的方便。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">  <span class="attribute">display</span>: flex;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">  <span class="attribute">flex-direction</span>: column;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">  <span class="attribute">justify-content</span>: center;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
+<p><img src="http://assets.wzbspace.top/img/felx-vertival-center.png" alt="flex-vertical-center"></p>
+<h2 id="水平和竖直方向上同时居中"><a href="#水平和竖直方向上同时居中" class="headerlink" title="水平和竖直方向上同时居中"></a>水平和竖直方向上同时居中</h2><p>你可以将上面的方法结合使用达到此目的。不过这里总结了几种比较方便的方式。</p>
+<h3 id="元素确定了高度和宽度时"><a href="#元素确定了高度和宽度时" class="headerlink" title="元素确定了高度和宽度时"></a>元素确定了高度和宽度时</h3><p>使用绝对定位之后，设置为负的margin属性，其值等于 高度/宽度 的50%。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">  <span class="attribute">position</span>: relative;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.child</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    <span class="attribute">height</span>: <span class="number">60px</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    <span class="attribute">width</span>: <span class="number">180px</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">    <span class="attribute">position</span>: absolute;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">    <span class="attribute">top</span>: <span class="number">50%</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">    <span class="attribute">left</span>: <span class="number">50%</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">    <span class="attribute">margin</span>: -<span class="number">30px</span> <span class="number">0</span> <span class="number">0</span> -<span class="number">90px</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
+<p><img src="http://assets.wzbspace.top/img/centering-positon-nagetive.png" alt="centering-positon-nagetive"></p>
+<p>这样进行居中的浏览器兼容性非常好。</p>
+<h3 id="不确定元素高宽"><a href="#不确定元素高宽" class="headerlink" title="不确定元素高宽"></a>不确定元素高宽</h3><p>与上例相同，使用绝对定位，不过换成了 translate 属性。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">  <span class="attribute">position</span>: relative;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.child</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    <span class="attribute">position</span>: absolute;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    <span class="attribute">top</span>: <span class="number">50%</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    <span class="attribute">left</span>: <span class="number">50%</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">    <span class="attribute">transform</span>: <span class="built_in">translate</span>(-50%, -50%);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
+<p><img src="http://assets.wzbspace.top/img/unknow-height-width-centering.png" alt="unknow-height-width-centering"></p>
+<h3 id="Flexbox-1"><a href="#Flexbox-1" class="headerlink" title="Flexbox"></a>Flexbox</h3><p>相信你已经想到了 Flexbox 如何实现，只需要把主轴和侧轴方向上都设置为居中就好了。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">  <span class="attribute">display</span>: flex;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">  <span class="attribute">justify-content</span>: center;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">  <span class="attribute">align-items</span>: center;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
+<p><img src="http://assets.wzbspace.top/img/flex-centerring.png" alt="flex-centerring"></p>
+<h3 id="Gird"><a href="#Gird" class="headerlink" title="Gird"></a>Gird</h3><p>对于居中一个元素来说，可以使用 Gird 的 trick。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">  <span class="attribute">display</span>: grid;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> <span class="selector-tag">div</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">  <span class="attribute">margin</span>: auto;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
+<p><img src="http://assets.wzbspace.top/img/flex-centerring.png" alt="flex-centerring"></p>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>现在你对居中的方法与选择有了清楚的认识，你再也不怕居中了。XD</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a href="https://css-tricks.com/centering-css-complete-guide/" target="_blank" rel="noopener">Centering in CSS - CSS Tricks</a></li>
+<li><a href="https://developer.mozilla.org/en-US/" target="_blank" rel="noopener">MDN</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html" target="_blank" rel="noopener">Flex 布局教程 - 阮一峰的博客</a></li>
+<li><a href="https://www.w3.org/TR/css-transforms-1/" target="_blank" rel="noopener">CSS Transforms Module Level 1 - W3C Candidate Recommendation</a></li>
+</ul>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/probberechts" target="_blank" rel="noopener">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#法律声明"><span class="toc-number">1.</span> <span class="toc-text">法律声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#写在前面"><span class="toc-number">1.1.</span> <span class="toc-text">写在前面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在水平方向上的居中（Horizontally-Centering）"><span class="toc-number">1.2.</span> <span class="toc-text">在水平方向上的居中（Horizontally Centering）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#对于行内（inline-inline-）元素"><span class="toc-number">1.2.1.</span> <span class="toc-text">对于行内（inline / inline-* ）元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对于块级元素（block-element）"><span class="toc-number">1.2.2.</span> <span class="toc-text">对于块级元素（block element）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如果有多个块级元素？"><span class="toc-number">1.2.3.</span> <span class="toc-text">如果有多个块级元素？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在竖直方向上的居中（Vertically-Centering）"><span class="toc-number">1.3.</span> <span class="toc-text">在竖直方向上的居中（Vertically Centering）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#对于行内（inline-inline-）元素-1"><span class="toc-number">1.3.1.</span> <span class="toc-text">对于行内（inline / inline-* ）元素</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#只有一行时"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">只有一行时</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#有多行文字时"><span class="toc-number">1.3.1.2.</span> <span class="toc-text">有多行文字时</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对于块级（block）元素"><span class="toc-number">1.3.2.</span> <span class="toc-text">对于块级（block）元素</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#已经确定块级元素的高度"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">已经确定块级元素的高度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#不能确定块级元素的高度"><span class="toc-number">1.3.2.2.</span> <span class="toc-text">不能确定块级元素的高度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#如果你不在乎元素撑大的话"><span class="toc-number">1.3.2.3.</span> <span class="toc-text">如果你不在乎元素撑大的话</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Flexbox"><span class="toc-number">1.3.2.3.1.</span> <span class="toc-text">Flexbox</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#水平和竖直方向上同时居中"><span class="toc-number">1.4.</span> <span class="toc-text">水平和竖直方向上同时居中</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#元素确定了高度和宽度时"><span class="toc-number">1.4.1.</span> <span class="toc-text">元素确定了高度和宽度时</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#不确定元素高宽"><span class="toc-number">1.4.2.</span> <span class="toc-text">不确定元素高宽</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flexbox-1"><span class="toc-number">1.4.3.</span> <span class="toc-text">Flexbox</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Gird"><span class="toc-number">1.4.4.</span> <span class="toc-text">Gird</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#写在最后"><span class="toc-number">1.5.</span> <span class="toc-text">写在最后</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">1.6.</span> <span class="toc-text">References</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/12/08/CSS-centering/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/12/08/CSS-centering/&text=CSS-centering" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/12/08/CSS-centering/&title=CSS-centering" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/12/08/CSS-centering/&is_video=false&description=CSS-centering" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=CSS-centering&body=Check out this article: http://yoursite.com/2019/12/08/CSS-centering/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/12/08/CSS-centering/&title=CSS-centering" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/12/08/CSS-centering/&title=CSS-centering" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/12/08/CSS-centering/&title=CSS-centering" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/12/08/CSS-centering/&title=CSS-centering" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/12/08/CSS-centering/&name=CSS-centering&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2019/12/08/CSS-centering/&t=CSS-centering" target="_blank" rel="noopener"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 John Doe
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/probberechts" target="_blank" rel="noopener">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-136390151-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

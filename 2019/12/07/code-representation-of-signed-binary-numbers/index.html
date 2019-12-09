@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="在计算机的世界中，只有 0 和 1。那么数的存储与运算是如何在二进制的世界中进行的呢？ 法律声明警告：本作品遵循 署名-非商业性使用-禁止演绎 4.0 未本地化版本（CC BY-NC-ND 4.0） 协议发布。你应该明白与本文有关的一切行为都应该遵循此协议。  这是什么？  写在前面阅读本文所需要的前置知识：  进制转换基础 基本的算术知识  核心内容在对带符号数进行算术运算时，必然涉及数的符号问">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「原码」「反码」「补码」你真的弄清了吗？">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;07&#x2F;code-representation-of-signed-binary-numbers&#x2F;index.html">
+<meta property="og:site_name" content="Wzb&#39;s Blog">
+<meta property="og:description" content="在计算机的世界中，只有 0 和 1。那么数的存储与运算是如何在二进制的世界中进行的呢？ 法律声明警告：本作品遵循 署名-非商业性使用-禁止演绎 4.0 未本地化版本（CC BY-NC-ND 4.0） 协议发布。你应该明白与本文有关的一切行为都应该遵循此协议。  这是什么？  写在前面阅读本文所需要的前置知识：  进制转换基础 基本的算术知识  核心内容在对带符号数进行算术运算时，必然涉及数的符号问">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-12-07T18:41:23.706Z">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>「原码」「反码」「补码」你真的弄清了吗？</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/probberechts" target="_blank" rel="noopener">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/12/08/CSS-centering/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/12/06/hello-world/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/12/07/code-representation-of-signed-binary-numbers/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/12/07/code-representation-of-signed-binary-numbers/&text=「原码」「反码」「补码」你真的弄清了吗？" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/12/07/code-representation-of-signed-binary-numbers/&title=「原码」「反码」「补码」你真的弄清了吗？" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/12/07/code-representation-of-signed-binary-numbers/&is_video=false&description=「原码」「反码」「补码」你真的弄清了吗？" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=「原码」「反码」「补码」你真的弄清了吗？&body=Check out this article: http://yoursite.com/2019/12/07/code-representation-of-signed-binary-numbers/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/12/07/code-representation-of-signed-binary-numbers/&title=「原码」「反码」「补码」你真的弄清了吗？" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/12/07/code-representation-of-signed-binary-numbers/&title=「原码」「反码」「补码」你真的弄清了吗？" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/12/07/code-representation-of-signed-binary-numbers/&title=「原码」「反码」「补码」你真的弄清了吗？" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/12/07/code-representation-of-signed-binary-numbers/&title=「原码」「反码」「补码」你真的弄清了吗？" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/12/07/code-representation-of-signed-binary-numbers/&name=「原码」「反码」「补码」你真的弄清了吗？&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2019/12/07/code-representation-of-signed-binary-numbers/&t=「原码」「反码」「补码」你真的弄清了吗？" target="_blank" rel="noopener"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#法律声明"><span class="toc-number">1.</span> <span class="toc-text">法律声明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#写在前面"><span class="toc-number">2.</span> <span class="toc-text">写在前面</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#核心内容"><span class="toc-number">3.</span> <span class="toc-text">核心内容</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原码"><span class="toc-number">3.1.</span> <span class="toc-text">原码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#小数原码"><span class="toc-number">3.1.1.</span> <span class="toc-text">小数原码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#整数原码"><span class="toc-number">3.1.2.</span> <span class="toc-text">整数原码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#原码的优劣"><span class="toc-number">3.1.3.</span> <span class="toc-text">原码的优劣</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#反码"><span class="toc-number">3.2.</span> <span class="toc-text">反码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#小数反码"><span class="toc-number">3.2.1.</span> <span class="toc-text">小数反码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#整数反码"><span class="toc-number">3.2.2.</span> <span class="toc-text">整数反码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#反码的优劣"><span class="toc-number">3.2.3.</span> <span class="toc-text">反码的优劣</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#补码"><span class="toc-number">3.3.</span> <span class="toc-text">补码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#小数补码"><span class="toc-number">3.4.</span> <span class="toc-text">小数补码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#整数补码"><span class="toc-number">3.5.</span> <span class="toc-text">整数补码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#补码的优劣"><span class="toc-number">3.5.1.</span> <span class="toc-text">补码的优劣</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-number">3.6.</span> <span class="toc-text">参考资料</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        「原码」「反码」「补码」你真的弄清了吗？
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Wzb's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-12-07T04:19:01.000Z" itemprop="datePublished">2019-12-07</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>在计算机的世界中，只有 <code>0</code> 和 <code>1</code>。那么数的存储与运算是如何在二进制的世界中进行的呢？</p>
+<h1 id="法律声明"><a href="#法律声明" class="headerlink" title="法律声明"></a>法律声明</h1><p><strong>警告</strong>：本作品遵循 <strong>署名-非商业性使用-禁止演绎 4.0 未本地化版本（CC BY-NC-ND 4.0）</strong> 协议发布。你应该明白与本文有关的一切行为都应该遵循此协议。</p>
+<blockquote>
+<p><a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">这是什么？</a></p>
+</blockquote>
+<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>阅读本文所需要的前置知识：</p>
+<ul>
+<li>进制转换基础</li>
+<li>基本的算术知识</li>
+</ul>
+<h1 id="核心内容"><a href="#核心内容" class="headerlink" title="核心内容"></a>核心内容</h1><p>在对带符号数进行算术运算时，必然涉及数的符号问题。在日常书写时，我们通常在一个数的前面用 <code>+</code> 或 <code>-</code> 来表示数的正负。在数字系统中，数的正负同样是由 <code>0</code> 和 <code>1</code> 来进行表示。一般将数的最高位作为符号位，<code>0</code> 代表正 <code>1</code> 代表负，其他位作为数值位。</p>
+<p>在计算机中，将符号和数值一起编码表示的二进制数称为<strong>机器数</strong>或<strong>机器码</strong>。常见的机器码有<strong>原码</strong>、<strong>反码</strong>和<strong>补码</strong>三种。</p>
+<h2 id="原码"><a href="#原码" class="headerlink" title="原码"></a>原码</h2><p>在使用原码表示带符号二进制数时，符号位用 <code>0</code> 代表正，<code>1</code> 代表负，数值位保持不变。原码表示法又称 <strong>符号 - 数值表示法</strong>。</p>
+<h3 id="小数原码"><a href="#小数原码" class="headerlink" title="小数原码"></a>小数原码</h3><p>例如：</p>
+<ul>
+<li><code>0.1011</code> 的原码是 <code>0.1011</code></li>
+<li><code>-0.1011</code> 的原码是 <code>1.1011</code></li>
+</ul>
+<blockquote>
+<p>代码中的小数点 <code>.</code> 是在书写时为了清晰起见加上去的，在机器中<strong>并不出现</strong>。</p>
+</blockquote>
+<h3 id="整数原码"><a href="#整数原码" class="headerlink" title="整数原码"></a>整数原码</h3><p>例如：</p>
+<ul>
+<li><code>1011</code> 的原码是 <code>01011</code></li>
+<li><code>-1011</code> 的原码是 <code>11011</code></li>
+</ul>
+<p>容易得出，<code>0</code> 的原码有两种形式，即 <code>00…0</code> 和 <code>10…0</code> 。</p>
+<h3 id="原码的优劣"><a href="#原码的优劣" class="headerlink" title="原码的优劣"></a>原码的优劣</h3><p>采用原码进行带符号二进制数的表示<strong>简单易懂</strong>，但是实现加减运算<strong>并不方便</strong>。</p>
+<p>当进行两数加减运算时，需要根据两个数的符号来确定是加还是减。如果是减法，还需要根据两数的大小来确定减数与被减数，以及运算结果的符号。显然，这将增加运算的复杂性。</p>
+<h2 id="反码"><a href="#反码" class="headerlink" title="反码"></a>反码</h2><p>使用反码进行带符号二进制数的表示时，符号位与原码相同。数值位与符号位相关。正数的数值位与原码相同，负数的数值位是真值的数值位按位取反。</p>
+<h3 id="小数反码"><a href="#小数反码" class="headerlink" title="小数反码"></a>小数反码</h3><p>例如：</p>
+<ul>
+<li><code>0.1011</code> 的反码是 <code>0.1011</code></li>
+<li><code>-0.1011</code> 的反码是 <code>1.0100</code></li>
+</ul>
+<h3 id="整数反码"><a href="#整数反码" class="headerlink" title="整数反码"></a>整数反码</h3><p>例如：</p>
+<ul>
+<li><code>1011</code> 的反码是 <code>01011</code></li>
+<li><code>-1011</code> 的反码是 <code>10100</code></li>
+</ul>
+<p>同样能够得出，<code>0</code> 的反码也有两种形式，即<code>00…0``11…1</code>。</p>
+<h3 id="反码的优劣"><a href="#反码的优劣" class="headerlink" title="反码的优劣"></a>反码的优劣</h3><p>采用反码进行加减运算时，无论是两数的加法还是减法，都可通过加法运算实现。</p>
+<p>运算时，符号位和数值位一起参加运算。需要注意的是，<strong>当符号位有进位产生时，应将进位加到运算结果的最低位，才能得到最终</strong>结果。如下例：</p>
+<p><code>printf(&quot;helloworld\n&quot;);</code></p>
+<h2 id="补码"><a href="#补码" class="headerlink" title="补码"></a>补码</h2><p>用补码表示带符号二进制数时，符号位与原码、反码相同。数值位与符号位相关。正数的补码的数值位与真值相同，负数补码的数值位是真值数值位按位取反，再在最低位上加 <code>1</code>。</p>
+<h2 id="小数补码"><a href="#小数补码" class="headerlink" title="小数补码"></a>小数补码</h2><p>例如：</p>
+<ul>
+<li><code>0.1011</code> 的补码是 <code>0.1011</code></li>
+<li><code>-0.1011</code> 的补码是 <code>1.0101</code></li>
+</ul>
+<h2 id="整数补码"><a href="#整数补码" class="headerlink" title="整数补码"></a>整数补码</h2><p>例如：</p>
+<ul>
+<li><code>1011</code> 的补码是 <code>01011</code></li>
+<li><code>-1011</code> 的补码是 <code>10101</code></li>
+</ul>
+<p>因此，整数 <code>0</code> 的补码表示法只有一种表示形式，即 <code>00…0</code>。</p>
+<h3 id="补码的优劣"><a href="#补码的优劣" class="headerlink" title="补码的优劣"></a>补码的优劣</h3><p>采用补码进行加减运算时，均可以通过加法实现。</p>
+<p>运算时，符号位与数值位一起参与运算，若符号位有进位产生（溢出）时，应该将进位<strong>丢弃</strong>，以得到正确结果。</p>
+<p><strong>显然，采用补码进行加减运算最为方便。</strong></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li>《数字逻辑（第四版） - 华中科技大学出版社》</li>
+<li><a href="https://en.wikipedia.org/wiki/Signed_number_representations#Ones' target="_blank" rel="noopener"_complement">Signed number representations - Wikipedia</a></li>
+</ol>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/probberechts" target="_blank" rel="noopener">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#法律声明"><span class="toc-number">1.</span> <span class="toc-text">法律声明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#写在前面"><span class="toc-number">2.</span> <span class="toc-text">写在前面</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#核心内容"><span class="toc-number">3.</span> <span class="toc-text">核心内容</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原码"><span class="toc-number">3.1.</span> <span class="toc-text">原码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#小数原码"><span class="toc-number">3.1.1.</span> <span class="toc-text">小数原码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#整数原码"><span class="toc-number">3.1.2.</span> <span class="toc-text">整数原码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#原码的优劣"><span class="toc-number">3.1.3.</span> <span class="toc-text">原码的优劣</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#反码"><span class="toc-number">3.2.</span> <span class="toc-text">反码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#小数反码"><span class="toc-number">3.2.1.</span> <span class="toc-text">小数反码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#整数反码"><span class="toc-number">3.2.2.</span> <span class="toc-text">整数反码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#反码的优劣"><span class="toc-number">3.2.3.</span> <span class="toc-text">反码的优劣</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#补码"><span class="toc-number">3.3.</span> <span class="toc-text">补码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#小数补码"><span class="toc-number">3.4.</span> <span class="toc-text">小数补码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#整数补码"><span class="toc-number">3.5.</span> <span class="toc-text">整数补码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#补码的优劣"><span class="toc-number">3.5.1.</span> <span class="toc-text">补码的优劣</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-number">3.6.</span> <span class="toc-text">参考资料</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/12/07/code-representation-of-signed-binary-numbers/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/12/07/code-representation-of-signed-binary-numbers/&text=「原码」「反码」「补码」你真的弄清了吗？" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/12/07/code-representation-of-signed-binary-numbers/&title=「原码」「反码」「补码」你真的弄清了吗？" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/12/07/code-representation-of-signed-binary-numbers/&is_video=false&description=「原码」「反码」「补码」你真的弄清了吗？" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=「原码」「反码」「补码」你真的弄清了吗？&body=Check out this article: http://yoursite.com/2019/12/07/code-representation-of-signed-binary-numbers/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/12/07/code-representation-of-signed-binary-numbers/&title=「原码」「反码」「补码」你真的弄清了吗？" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/12/07/code-representation-of-signed-binary-numbers/&title=「原码」「反码」「补码」你真的弄清了吗？" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/12/07/code-representation-of-signed-binary-numbers/&title=「原码」「反码」「补码」你真的弄清了吗？" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/12/07/code-representation-of-signed-binary-numbers/&title=「原码」「反码」「补码」你真的弄清了吗？" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/12/07/code-representation-of-signed-binary-numbers/&name=「原码」「反码」「补码」你真的弄清了吗？&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2019/12/07/code-representation-of-signed-binary-numbers/&t=「原码」「反码」「补码」你真的弄清了吗？" target="_blank" rel="noopener"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 John Doe
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/probberechts" target="_blank" rel="noopener">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-136390151-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
