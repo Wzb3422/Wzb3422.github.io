@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang=en>
+<html lang=zh>
 <head>
     <!-- so meta -->
     <meta charset="utf-8">
@@ -10,10 +10,10 @@
 <meta name="keywords" content="Basics">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「原码」「反码」「补码」你真的弄清了吗？">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;07&#x2F;code-representation-of-signed-binary-numbers&#x2F;index.html">
+<meta property="og:url" content="https:&#x2F;&#x2F;blog.wzb.me&#x2F;2019&#x2F;12&#x2F;07&#x2F;code-representation-of-signed-binary-numbers&#x2F;index.html">
 <meta property="og:site_name" content="Wzb&#39;s Blog">
 <meta property="og:description" content="在计算机的世界中，只有 0 和 1。那么数的存储与运算是如何在二进制的世界中进行的呢？ 法律声明警告：本作品遵循 署名-非商业性使用-禁止演绎 4.0 未本地化版本（CC BY-NC-ND 4.0） 协议发布。你应该明白与本文有关的一切行为都应该遵循此协议。  这是什么？  写在前面阅读本文所需要的前置知识：  进制转换基础 基本的算术知识  核心内容在对带符号数进行算术运算时，必然涉及数的符号问">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="zh-cn">
 <meta property="og:updated_time" content="2019-12-08T02:07:16.370Z">
 <meta name="twitter:card" content="summary">
     
@@ -74,8 +74,6 @@
         <li><a class="icon" href="/2019/12/08/CSS-centering/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" href="/2019/12/06/hello-world/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
-        
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
       </ul>
@@ -87,17 +85,17 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/12/07/code-representation-of-signed-binary-numbers/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/12/07/code-representation-of-signed-binary-numbers/&text=「原码」「反码」「补码」你真的弄清了吗？" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/12/07/code-representation-of-signed-binary-numbers/&title=「原码」「反码」「补码」你真的弄清了吗？" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/12/07/code-representation-of-signed-binary-numbers/&is_video=false&description=「原码」「反码」「补码」你真的弄清了吗？" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=「原码」「反码」「补码」你真的弄清了吗？&body=Check out this article: http://yoursite.com/2019/12/07/code-representation-of-signed-binary-numbers/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/12/07/code-representation-of-signed-binary-numbers/&title=「原码」「反码」「补码」你真的弄清了吗？" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/12/07/code-representation-of-signed-binary-numbers/&title=「原码」「反码」「补码」你真的弄清了吗？" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/12/07/code-representation-of-signed-binary-numbers/&title=「原码」「反码」「补码」你真的弄清了吗？" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/12/07/code-representation-of-signed-binary-numbers/&title=「原码」「反码」「补码」你真的弄清了吗？" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/12/07/code-representation-of-signed-binary-numbers/&name=「原码」「反码」「补码」你真的弄清了吗？&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2019/12/07/code-representation-of-signed-binary-numbers/&t=「原码」「反码」「补码」你真的弄清了吗？" target="_blank" rel="noopener"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://blog.wzb.me/2019/12/07/code-representation-of-signed-binary-numbers/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://blog.wzb.me/2019/12/07/code-representation-of-signed-binary-numbers/&text=「原码」「反码」「补码」你真的弄清了吗？" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://blog.wzb.me/2019/12/07/code-representation-of-signed-binary-numbers/&title=「原码」「反码」「补码」你真的弄清了吗？" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.wzb.me/2019/12/07/code-representation-of-signed-binary-numbers/&is_video=false&description=「原码」「反码」「补码」你真的弄清了吗？" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=「原码」「反码」「补码」你真的弄清了吗？&body=Check out this article: https://blog.wzb.me/2019/12/07/code-representation-of-signed-binary-numbers/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://blog.wzb.me/2019/12/07/code-representation-of-signed-binary-numbers/&title=「原码」「反码」「补码」你真的弄清了吗？" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://blog.wzb.me/2019/12/07/code-representation-of-signed-binary-numbers/&title=「原码」「反码」「补码」你真的弄清了吗？" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://blog.wzb.me/2019/12/07/code-representation-of-signed-binary-numbers/&title=「原码」「反码」「补码」你真的弄清了吗？" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://blog.wzb.me/2019/12/07/code-representation-of-signed-binary-numbers/&title=「原码」「反码」「补码」你真的弄清了吗？" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://blog.wzb.me/2019/12/07/code-representation-of-signed-binary-numbers/&name=「原码」「反码」「补码」你真的弄清了吗？&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://blog.wzb.me/2019/12/07/code-representation-of-signed-binary-numbers/&t=「原码」「反码」「补码」你真的弄清了吗？" target="_blank" rel="noopener"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -239,17 +237,17 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/12/07/code-representation-of-signed-binary-numbers/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/12/07/code-representation-of-signed-binary-numbers/&text=「原码」「反码」「补码」你真的弄清了吗？" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/12/07/code-representation-of-signed-binary-numbers/&title=「原码」「反码」「补码」你真的弄清了吗？" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/12/07/code-representation-of-signed-binary-numbers/&is_video=false&description=「原码」「反码」「补码」你真的弄清了吗？" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=「原码」「反码」「补码」你真的弄清了吗？&body=Check out this article: http://yoursite.com/2019/12/07/code-representation-of-signed-binary-numbers/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/12/07/code-representation-of-signed-binary-numbers/&title=「原码」「反码」「补码」你真的弄清了吗？" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/12/07/code-representation-of-signed-binary-numbers/&title=「原码」「反码」「补码」你真的弄清了吗？" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/12/07/code-representation-of-signed-binary-numbers/&title=「原码」「反码」「补码」你真的弄清了吗？" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/12/07/code-representation-of-signed-binary-numbers/&title=「原码」「反码」「补码」你真的弄清了吗？" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/12/07/code-representation-of-signed-binary-numbers/&name=「原码」「反码」「补码」你真的弄清了吗？&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2019/12/07/code-representation-of-signed-binary-numbers/&t=「原码」「反码」「补码」你真的弄清了吗？" target="_blank" rel="noopener"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://blog.wzb.me/2019/12/07/code-representation-of-signed-binary-numbers/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://blog.wzb.me/2019/12/07/code-representation-of-signed-binary-numbers/&text=「原码」「反码」「补码」你真的弄清了吗？" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://blog.wzb.me/2019/12/07/code-representation-of-signed-binary-numbers/&title=「原码」「反码」「补码」你真的弄清了吗？" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.wzb.me/2019/12/07/code-representation-of-signed-binary-numbers/&is_video=false&description=「原码」「反码」「补码」你真的弄清了吗？" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=「原码」「反码」「补码」你真的弄清了吗？&body=Check out this article: https://blog.wzb.me/2019/12/07/code-representation-of-signed-binary-numbers/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://blog.wzb.me/2019/12/07/code-representation-of-signed-binary-numbers/&title=「原码」「反码」「补码」你真的弄清了吗？" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://blog.wzb.me/2019/12/07/code-representation-of-signed-binary-numbers/&title=「原码」「反码」「补码」你真的弄清了吗？" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://blog.wzb.me/2019/12/07/code-representation-of-signed-binary-numbers/&title=「原码」「反码」「补码」你真的弄清了吗？" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://blog.wzb.me/2019/12/07/code-representation-of-signed-binary-numbers/&title=「原码」「反码」「补码」你真的弄清了吗？" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://blog.wzb.me/2019/12/07/code-representation-of-signed-binary-numbers/&name=「原码」「反码」「补码」你真的弄清了吗？&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://blog.wzb.me/2019/12/07/code-representation-of-signed-binary-numbers/&t=「原码」「反码」「补码」你真的弄清了吗？" target="_blank" rel="noopener"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -267,7 +265,7 @@
         
         <footer id="footer">
   <div class="footer-left">
-    Copyright &copy; 2019 John Doe
+    Copyright &copy; 2019 Zhenbin Wu
   </div>
   <div class="footer-right">
     <nav>
