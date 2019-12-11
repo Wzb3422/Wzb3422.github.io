@@ -10,7 +10,7 @@
 <meta name="keywords" content="CSS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="移动端适配">
-<meta property="og:url" content="https:&#x2F;&#x2F;blog.wzb.me&#x2F;2019&#x2F;12&#x2F;08&#x2F;for-mobile&#x2F;index.html">
+<meta property="og:url" content="https:&#x2F;&#x2F;blog.wzb.me&#x2F;2019&#x2F;11&#x2F;09&#x2F;for-mobile&#x2F;index.html">
 <meta property="og:site_name" content="Wzb&#39;s Blog">
 <meta property="og:description" content="在前端开发中会遇到各种各样的单位，或许会让你感到十分恐惧？战胜恐惧的最好办法就是面对恐惧。来，把它们的来龙去脉捋捋清楚。 法律声明警告：本作品遵循 署名-非商业性使用-禁止演绎 4.0 未本地化版本（CC BY-NC-ND 4.0） 协议发布。你应该明白与本文有关的一切行为都应该遵循此协议。  这是什么？  写在前面本文将从现实到抽象，跟着 web 的发展帮你理解各种单位与移动端适配方案。 常见概">
 <meta property="og:locale" content="zh-cn">
@@ -23,7 +23,7 @@
 <meta property="og:image" content="http:&#x2F;&#x2F;assets.wzbspace.top&#x2F;img&#x2F;Non-Retina_Display.jpg">
 <meta property="og:image" content="http:&#x2F;&#x2F;assets.wzbspace.top&#x2F;img&#x2F;Retina_Display.jpg">
 <meta property="og:image" content="http:&#x2F;&#x2F;assets.wzbspace.top&#x2F;img&#x2F;Screen Shot 2019-11-16 at 3.23.11 PM.png">
-<meta property="og:updated_time" content="2019-12-08T02:15:40.042Z">
+<meta property="og:updated_time" content="2019-12-10T15:28:20.786Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;assets.wzbspace.top&#x2F;img&#x2F;Pixel-example.png">
     
@@ -84,7 +84,7 @@
         <li><a class="icon" href="/2019/12/08/2019-summary/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" href="/2019/12/08/CSS-centering/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" href="/2019/10/28/CSS-centering/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -97,17 +97,17 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://blog.wzb.me/2019/12/08/for-mobile/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://blog.wzb.me/2019/12/08/for-mobile/&text=移动端适配" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://blog.wzb.me/2019/12/08/for-mobile/&title=移动端适配" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.wzb.me/2019/12/08/for-mobile/&is_video=false&description=移动端适配" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=移动端适配&body=Check out this article: https://blog.wzb.me/2019/12/08/for-mobile/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://blog.wzb.me/2019/12/08/for-mobile/&title=移动端适配" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://blog.wzb.me/2019/12/08/for-mobile/&title=移动端适配" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://blog.wzb.me/2019/12/08/for-mobile/&title=移动端适配" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://blog.wzb.me/2019/12/08/for-mobile/&title=移动端适配" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://blog.wzb.me/2019/12/08/for-mobile/&name=移动端适配&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://blog.wzb.me/2019/12/08/for-mobile/&t=移动端适配" target="_blank" rel="noopener"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://blog.wzb.me/2019/11/09/for-mobile/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://blog.wzb.me/2019/11/09/for-mobile/&text=移动端适配" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://blog.wzb.me/2019/11/09/for-mobile/&title=移动端适配" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.wzb.me/2019/11/09/for-mobile/&is_video=false&description=移动端适配" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=移动端适配&body=Check out this article: https://blog.wzb.me/2019/11/09/for-mobile/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://blog.wzb.me/2019/11/09/for-mobile/&title=移动端适配" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://blog.wzb.me/2019/11/09/for-mobile/&title=移动端适配" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://blog.wzb.me/2019/11/09/for-mobile/&title=移动端适配" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://blog.wzb.me/2019/11/09/for-mobile/&title=移动端适配" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://blog.wzb.me/2019/11/09/for-mobile/&name=移动端适配&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://blog.wzb.me/2019/11/09/for-mobile/&t=移动端适配" target="_blank" rel="noopener"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -136,7 +136,7 @@
       
     <div class="postdate">
       
-        <time datetime="2019-12-07T19:43:37.000Z" itemprop="datePublished">2019-12-08</time>
+        <time datetime="2019-11-09T01:43:37.000Z" itemprop="datePublished">2019-11-09</time>
         
       
     </div>
@@ -243,17 +243,17 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://blog.wzb.me/2019/12/08/for-mobile/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://blog.wzb.me/2019/12/08/for-mobile/&text=移动端适配" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://blog.wzb.me/2019/12/08/for-mobile/&title=移动端适配" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.wzb.me/2019/12/08/for-mobile/&is_video=false&description=移动端适配" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=移动端适配&body=Check out this article: https://blog.wzb.me/2019/12/08/for-mobile/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://blog.wzb.me/2019/12/08/for-mobile/&title=移动端适配" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://blog.wzb.me/2019/12/08/for-mobile/&title=移动端适配" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://blog.wzb.me/2019/12/08/for-mobile/&title=移动端适配" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://blog.wzb.me/2019/12/08/for-mobile/&title=移动端适配" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://blog.wzb.me/2019/12/08/for-mobile/&name=移动端适配&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://blog.wzb.me/2019/12/08/for-mobile/&t=移动端适配" target="_blank" rel="noopener"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://blog.wzb.me/2019/11/09/for-mobile/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://blog.wzb.me/2019/11/09/for-mobile/&text=移动端适配" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://blog.wzb.me/2019/11/09/for-mobile/&title=移动端适配" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.wzb.me/2019/11/09/for-mobile/&is_video=false&description=移动端适配" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=移动端适配&body=Check out this article: https://blog.wzb.me/2019/11/09/for-mobile/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://blog.wzb.me/2019/11/09/for-mobile/&title=移动端适配" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://blog.wzb.me/2019/11/09/for-mobile/&title=移动端适配" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://blog.wzb.me/2019/11/09/for-mobile/&title=移动端适配" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://blog.wzb.me/2019/11/09/for-mobile/&title=移动端适配" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://blog.wzb.me/2019/11/09/for-mobile/&name=移动端适配&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://blog.wzb.me/2019/11/09/for-mobile/&t=移动端适配" target="_blank" rel="noopener"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
