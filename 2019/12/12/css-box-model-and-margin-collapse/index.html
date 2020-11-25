@@ -14,16 +14,16 @@
 <meta property="og:site_name" content="Wzb&#39;s Blog">
 <meta property="og:description" content="什么是 CSS 盒模型首先看看 W3C 给出的定义： The CSS box model describes the rectangular boxes that are generated for elements in the document tree and laid out according to the visual formatting model. 盒模型定义了在文档树中的矩形区">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:image" content="http:&#x2F;&#x2F;assets.wzbspace.top&#x2F;img&#x2F;20191212145430.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;assets.wzbspace.top&#x2F;img&#x2F;box-model-dsfajk.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;assets.wzbspace.top&#x2F;img&#x2F;content-box-css-box-model.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;assets.wzbspace.top&#x2F;img&#x2F;border-box-css-box.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;assets.wzbspace.top&#x2F;img&#x2F;siblings-margin-collapsing.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;assets.wzbspace.top&#x2F;img&#x2F;container-box-margin-collpasing.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;assets.wzbspace.top&#x2F;img&#x2F;Kapture 2019-12-12 at 16.18.53.gif">
+<meta property="og:image" content="http:&#x2F;&#x2F;wzb-img-base.oss-cn-shanghai.aliyuncs.com&#x2F;img&#x2F;20191212145430.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;wzb-img-base.oss-cn-shanghai.aliyuncs.com&#x2F;img&#x2F;box-model-dsfajk.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;wzb-img-base.oss-cn-shanghai.aliyuncs.com&#x2F;img&#x2F;content-box-css-box-model.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;wzb-img-base.oss-cn-shanghai.aliyuncs.com&#x2F;img&#x2F;border-box-css-box.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;wzb-img-base.oss-cn-shanghai.aliyuncs.com&#x2F;img&#x2F;siblings-margin-collapsing.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;wzb-img-base.oss-cn-shanghai.aliyuncs.com&#x2F;img&#x2F;container-box-margin-collpasing.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;wzb-img-base.oss-cn-shanghai.aliyuncs.com&#x2F;img&#x2F;Kapture 2019-12-12 at 16.18.53.gif">
 <meta property="og:updated_time" content="2019-12-12T09:38:47.501Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;assets.wzbspace.top&#x2F;img&#x2F;20191212145430.png">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;wzb-img-base.oss-cn-shanghai.aliyuncs.com&#x2F;img&#x2F;20191212145430.png">
     
     
         
@@ -150,6 +150,7 @@
     </div>
   </header>
   
+  <img src="./logo.png" alt="logo">
 
   <div class="content" itemprop="articleBody">
     <h2 id="什么是-CSS-盒模型"><a href="#什么是-CSS-盒模型" class="headerlink" title="什么是 CSS 盒模型"></a>什么是 CSS 盒模型</h2><p>首先看看 W3C 给出的定义：</p>
@@ -159,10 +160,10 @@
 <h2 id="盒模型介绍"><a href="#盒模型介绍" class="headerlink" title="盒模型介绍"></a>盒模型介绍</h2><p>进行页面布局的时候，浏览器引擎将元素基于盒模型进行处理。CSS 会定义元素的大小、位置、及其他属性。</p>
 <p>盒模型由 <code>content area</code> ，和可选的 <code>padding area</code> <code>border area</code> <code>margin area</code> 构成。各自的边缘决定每个区域的范围。</p>
 <p>下图描述的各个区域及其边缘。</p>
-<img src="http://assets.wzbspace.top/img/20191212145430.png" alt="01912121454"  />
+<img src="http://wzb-img-base.oss-cn-shanghai.aliyuncs.com/img/20191212145430.png" alt="01912121454"  />
 
 <p>我们也经常能在 <code>Chrome Devtools - Styles</code> 下，见到下它。</p>
-<img src="http://assets.wzbspace.top/img/box-model-dsfajk.png" alt="box-model" style="zoom: 50%;"/>
+<img src="http://wzb-img-base.oss-cn-shanghai.aliyuncs.com/img/box-model-dsfajk.png" alt="box-model" style="zoom: 50%;"/>
 
 <h2 id="两种盒子模型"><a href="#两种盒子模型" class="headerlink" title="两种盒子模型"></a>两种盒子模型</h2><p>设置元素的 <code>box-sizing</code> 属性，能修改元素的高宽计算方式。</p>
 <p><code>box-sizing</code> 属性有两个可选值：</p>
@@ -176,26 +177,26 @@
 <li><code>height = content height</code></li>
 <li><code>width = content height</code></li>
 </ul>
-<img src="http://assets.wzbspace.top/img/content-box-css-box-model.png" alt="border-box" style="zoom: 50%;"/>
+<img src="http://wzb-img-base.oss-cn-shanghai.aliyuncs.com/img/content-box-css-box-model.png" alt="border-box" style="zoom: 50%;"/>
 
 <h3 id="IE-怪异盒子模型"><a href="#IE-怪异盒子模型" class="headerlink" title="IE 怪异盒子模型"></a>IE 怪异盒子模型</h3><p>当 <code>box-sizing</code> 值为 <code>box-sizing</code> 时，元素的高宽计算方式如下：</p>
 <ul>
 <li><code>height = border-top + padding-top + content height + padding-bottom + border-bottom</code></li>
 <li><code>width = border-left + padding-left + content-width + padding-right + border-right</code></li>
 </ul>
-<img src="http://assets.wzbspace.top/img/border-box-css-box.png" alt="border-box" style="zoom: 50%;"/>
+<img src="http://wzb-img-base.oss-cn-shanghai.aliyuncs.com/img/border-box-css-box.png" alt="border-box" style="zoom: 50%;"/>
 
 <h3 id="DOCTYPE"><a href="#DOCTYPE" class="headerlink" title="DOCTYPE"></a>DOCTYPE</h3><p>我们在编写页面时，声明 HTML 文档的 <code>DOCTYPE</code> 能让浏览器对盒模型对处理行为统一，保证兼容性。</p>
 <h2 id="外边距合并"><a href="#外边距合并" class="headerlink" title="外边距合并"></a>外边距合并</h2><p><strong>毗邻</strong>块级元素的上外边距和下外边距有时会合并（或折叠）为一个外边距，其大小取其中的最大者，这种行为称为外边距折叠（margin collapsing），也作外边距合并。</p>
 <p>我们讨论对外边距合并，都是指竖直方向上对合并，水平方向上不会发生外边距合并。</p>
 <p>我们先来看两种常见情况：</p>
-<h3 id="兄弟盒子外边距合并"><a href="#兄弟盒子外边距合并" class="headerlink" title="兄弟盒子外边距合并"></a>兄弟盒子外边距合并</h3><img src="http://assets.wzbspace.top/img/siblings-margin-collapsing.png" alt="siblings-margin-collapsing" style="zoom: 100%;" />
+<h3 id="兄弟盒子外边距合并"><a href="#兄弟盒子外边距合并" class="headerlink" title="兄弟盒子外边距合并"></a>兄弟盒子外边距合并</h3><img src="http://wzb-img-base.oss-cn-shanghai.aliyuncs.com/img/siblings-margin-collapsing.png" alt="siblings-margin-collapsing" style="zoom: 100%;" />
 
 <p>可见，上下兄弟元素在竖直方向上发生了外边距折叠。</p>
 <h3 id="父子盒子外边距合并"><a href="#父子盒子外边距合并" class="headerlink" title="父子盒子外边距合并"></a>父子盒子外边距合并</h3><p>父子盒子的外边距合并，需要子元素与父元素的上下 <code>margin edge</code> 之间不能有间隙。</p>
-<img src="http://assets.wzbspace.top/img/container-box-margin-collpasing.png" alt="contain-box-margin-collpasing-code" style="zoom: 50%;" />
+<img src="http://wzb-img-base.oss-cn-shanghai.aliyuncs.com/img/container-box-margin-collpasing.png" alt="contain-box-margin-collpasing-code" style="zoom: 50%;" />
 
-<img src="http://assets.wzbspace.top/img/Kapture 2019-12-12 at 16.18.53.gif" alt="contain-box-margin-collpasing" style="zoom: 40%;">
+<img src="http://wzb-img-base.oss-cn-shanghai.aliyuncs.com/img/Kapture 2019-12-12 at 16.18.53.gif" alt="contain-box-margin-collpasing" style="zoom: 40%;">
 
 <h3 id="外边距合并发生的条件"><a href="#外边距合并发生的条件" class="headerlink" title="外边距合并发生的条件"></a>外边距合并发生的条件</h3><p>那么，什么情况下会发生外边距合并呢？</p>
 <p>以下是 W3C 标准文档中的描述</p>
